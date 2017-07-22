@@ -1,0 +1,22 @@
+version: '3'
+services:
+  api:
+    image: golang:1.8
+    container_name: grud_api
+    ports:
+      - "8080:8080"
+    environment:
+      - PORT=8080
+      - DB_HOST=mongodb
+      - DB_NAME=grud
+      - DB_PORT=27017
+    volumes:
+      - .:/go/src/github.com/lohanbodevan/grud
+    working_dir: /go/src/github.com/lohanbodevan/grud
+    command: make run
+    links:
+      - mongodb
+  mongodb:
+    image: mongo:3.4
+    ports:
+      - "27017:27017"
