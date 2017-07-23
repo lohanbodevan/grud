@@ -8,25 +8,28 @@ import (
 	"os"
 )
 
-type Repository struct {
-	Session *mgo.Session
+type Repository interface {
+	DB(name string) *mgo.Database
+	Close()
 }
 
 type Api struct {
-	Repository *Repository
+	Repository Repository
 }
 
 func (app *Api) ConfigureRoutes(router *mux.Router) {
 	router.HandleFunc("/tvseries", app.GetTVSeriesHandler).Methods("get")
 	router.HandleFunc("/tvseries", app.CreateTVSerieHandler).Methods("post")
+	router.HandleFunc("/tvseries/{code}", app.UpdateTVSerieHandler).Methods("put")
+	router.HandleFunc("/tvseries/{code}", app.DeleteTVSerieHandler).Methods("delete")
 }
 
 func InitServer() {
 	repository := DatabseInit()
-	defer repository.Session.Close()
+	defer repository.Close()
 
 	app := Api{
-		Repository: &repository,
+		Repository: repository,
 	}
 
 	mux := mux.NewRouter()
@@ -46,8 +49,5 @@ func DatabseInit() Repository {
 		panic(err)
 	}
 
-	repo := Repository{
-		Session: session,
-	}
-	return repo
+	return session
 }

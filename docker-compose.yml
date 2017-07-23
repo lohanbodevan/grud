@@ -13,7 +13,7 @@ services:
     volumes:
       - .:/go/src/github.com/lohanbodevan/grud
     working_dir: /go/src/github.com/lohanbodevan/grud
-    command: make run
+    command: tail -f /dev/null
     links:
       - mongodb
   mongodb:

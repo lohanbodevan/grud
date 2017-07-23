@@ -2,7 +2,13 @@ package api
 
 import (
 	"encoding/json"
+	"github.com/gorilla/mux"
 	"net/http"
+)
+
+const (
+	NOT_FOUND        = "not found"
+	VALIDATION_ERROR = "Validation error"
 )
 
 func (a *Api) GetTVSeriesHandler(w http.ResponseWriter, r *http.Request) {
@@ -34,9 +40,49 @@ func (a *Api) CreateTVSerieHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	err = CreateTVSerie(payload, a.Repository)
-	if err != nil {
+	if err.Error() == VALIDATION_ERROR {
+		w.WriteHeader(http.StatusBadRequest)
+	} else if err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
+	} else {
+		w.WriteHeader(http.StatusCreated)
+	}
+}
+
+func (a *Api) UpdateTVSerieHandler(w http.ResponseWriter, r *http.Request) {
+	vars := mux.Vars(r)
+	if vars["code"] == "" {
+		w.WriteHeader(http.StatusBadRequest)
 	}
 
-	w.WriteHeader(http.StatusCreated)
+	var payload TVSerie
+	err := json.NewDecoder(r.Body).Decode(&payload)
+	if err != nil {
+		w.WriteHeader(http.StatusBadRequest)
+	}
+
+	err = UpdateTVSerie(vars["code"], payload, a.Repository)
+	if err.Error() == NOT_FOUND {
+		w.WriteHeader(http.StatusNotFound)
+	} else if err.Error() == VALIDATION_ERROR {
+		w.WriteHeader(http.StatusBadRequest)
+	} else if err != nil {
+		w.WriteHeader(http.StatusInternalServerError)
+	} else {
+		w.WriteHeader(http.StatusOK)
+	}
+}
+
+func (a *Api) DeleteTVSerieHandler(w http.ResponseWriter, r *http.Request) {
+	vars := mux.Vars(r)
+	if vars["code"] == "" {
+		w.WriteHeader(http.StatusBadRequest)
+	}
+
+	err := DeleteTVSerie(vars["code"], a.Repository)
+	if err != nil {
+		w.WriteHeader(http.StatusInternalServerError)
+	} else {
+		w.WriteHeader(http.StatusOK)
+	}
 }

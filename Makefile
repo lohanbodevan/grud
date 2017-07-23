@@ -12,6 +12,9 @@ test: setup-test install
 run: install
 	go run main.go
 
+docker-run:
+	docker exec -it ${CONTAINER} make run
+
 docker-test:
 	docker exec -it ${CONTAINER} make test
 
