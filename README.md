@@ -156,3 +156,6 @@ Payload:
 
 PS.: This repository did not has DB seeds.
 You need to create `user` document in your MongoDB instance with `email` and sha256 encrypted `password`
+
+## Docs
+There are environment and collection for [Postman](https://www.getpostman.com/) in `docs` folder to facilitate play with api.
