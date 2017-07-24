@@ -161,7 +161,6 @@ Payload:
     "email": "admin@example.com",
     "password": "somecoolpassword"
 }
-
 ```
 
 PS.: This repository did not has DB seeds.
