@@ -1,6 +1,6 @@
-# GRUD
+# GRUD <a href="https://travis-ci.org/lohanbodevan/grud"><img alt="Travis Status" src="https://travis-ci.org/lohanbodevan/grud.svg?branch=master"></a>
 
-GRUD is **G**olang C**RUD** REST API using MongoDB and JWT security standards example.
+GRUD is **G**olang C**RUD** REST API using MongoDB and JWT security standard example.
 
 
 ## Development
@@ -28,9 +28,11 @@ make docker-test
 ## Endpoints
 ### Create
 POST /tv-series
+
 To create TV Series record, do a `post` HTTP request in `/tv-series` endpoint
 
 **Token**
+
 This endpoint is protected and you should pass `Authorization` header with token.
 To get token, see `Login` endpoint
 
@@ -60,7 +62,9 @@ Payload:
 
 ### Read
 GET /tv-series
-To read all TV Series available in our catalog, do a `get` HTTP request in `/tv-series` endpoint
+
+To read all TV Series available in our catalog, do a `get` HTTP request in `/tv-series` endpoint.
+
 This endpoint is open
 
 Reponse:
@@ -88,13 +92,16 @@ Reponse:
 
 ### Update
 PUT /tv-series/<code>
+
 To update a TV Series record, do a `put` HTTP request in `/tv-series/<code>` endpoint
 
 **Token**
+
 This endpoint is protected and you should pass `Authorization` header with token.
 To get token, see `Login` endpoint
 
 **Code**
+
 The `code` is returned in `GET /tv-series` endpoint
 
 Header:
@@ -127,13 +134,16 @@ Payload:
 
 ### Delete
 DELETE /tv-series/<code>
+
 To delete a TV Series record, do a `delete` HTTP request in `/tv-series/<code>` endpoint
 
 **Token**
+
 This endpoint is protected and you should pass `Authorization` header with token.
 To get token, see `Login` endpoint
 
 **Code**
+
 The `code` is returned in `GET /tv-series` endpoint
 
 Header:
