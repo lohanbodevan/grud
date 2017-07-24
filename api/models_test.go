@@ -90,3 +90,31 @@ func (s *TestSuite) TestTVSerieShouldntReturnError(c *C) {
 	err := serie.Validate()
 	c.Assert(err, IsNil)
 }
+
+func (s *TestSuite) TestUserWithoutEmailShouldReturnError(c *C) {
+	user := User{
+		Password: "123456",
+	}
+
+	err := user.Validate()
+	c.Assert(err.Error(), Equals, VALIDATION_ERROR)
+}
+
+func (s *TestSuite) TestUserWithoutPasswordShouldReturnError(c *C) {
+	user := User{
+		Email: "example@example.com",
+	}
+
+	err := user.Validate()
+	c.Assert(err.Error(), Equals, VALIDATION_ERROR)
+}
+
+func (s *TestSuite) TestUserValidationShouldntReturnError(c *C) {
+	user := User{
+		Email:    "example@example.com",
+		Password: "123456",
+	}
+
+	err := user.Validate()
+	c.Assert(err, IsNil)
+}

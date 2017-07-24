@@ -22,6 +22,7 @@ func (app *Api) ConfigureRoutes(router *mux.Router) {
 	router.HandleFunc("/tvseries", app.CreateTVSerieHandler).Methods("post")
 	router.HandleFunc("/tvseries/{code}", app.UpdateTVSerieHandler).Methods("put")
 	router.HandleFunc("/tvseries/{code}", app.DeleteTVSerieHandler).Methods("delete")
+	router.HandleFunc("/login", app.LoginHandler).Methods("post")
 }
 
 func InitServer() {
