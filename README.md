@@ -91,9 +91,9 @@ Reponse:
 ```
 
 ### Update
-PUT /tv-series/<code>
+PUT /tv-series/code
 
-To update a TV Series record, do a `put` HTTP request in `/tv-series/<code>` endpoint
+To update a TV Series record, do a `put` HTTP request in `/tv-series/code` endpoint
 
 **Token**
 
@@ -133,9 +133,9 @@ Payload:
 ```
 
 ### Delete
-DELETE /tv-series/<code>
+DELETE /tv-series/code
 
-To delete a TV Series record, do a `delete` HTTP request in `/tv-series/<code>` endpoint
+To delete a TV Series record, do a `delete` HTTP request in `/tv-series/code` endpoint
 
 **Token**
 
