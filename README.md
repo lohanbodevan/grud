@@ -18,7 +18,7 @@ make docker-build
 make docker-run
 ```
 
-Access: http://localhost:8080/tv-series
+Access: http://localhost:8080/tvseries
 
 ### Run Tests
 ```
@@ -27,9 +27,9 @@ make docker-test
 
 ## Endpoints
 ### Create
-POST /tv-series
+POST /tvseries
 
-To create TV Series record, do a `post` HTTP request in `/tv-series` endpoint
+To create TV Series record, do a `post` HTTP request in `/tvseries` endpoint
 
 **Token**
 
@@ -61,9 +61,9 @@ Payload:
 ```
 
 ### Read
-GET /tv-series
+GET /tvseries
 
-To read all TV Series available in our catalog, do a `get` HTTP request in `/tv-series` endpoint.
+To read all TV Series available in our catalog, do a `get` HTTP request in `/tvseries` endpoint.
 
 This endpoint is open
 
@@ -91,9 +91,9 @@ Reponse:
 ```
 
 ### Update
-PUT /tv-series/code
+PUT /tvseries/code
 
-To update a TV Series record, do a `put` HTTP request in `/tv-series/code` endpoint
+To update a TV Series record, do a `put` HTTP request in `/tvseries/code` endpoint
 
 **Token**
 
@@ -102,7 +102,7 @@ To get token, see `Login` endpoint
 
 **Code**
 
-The `code` is returned in `GET /tv-series` endpoint
+The `code` is returned in `GET /tvseries` endpoint
 
 Header:
 ```
@@ -133,9 +133,9 @@ Payload:
 ```
 
 ### Delete
-DELETE /tv-series/code
+DELETE /tvseries/code
 
-To delete a TV Series record, do a `delete` HTTP request in `/tv-series/code` endpoint
+To delete a TV Series record, do a `delete` HTTP request in `/tvseries/code` endpoint
 
 **Token**
 
@@ -144,7 +144,7 @@ To get token, see `Login` endpoint
 
 **Code**
 
-The `code` is returned in `GET /tv-series` endpoint
+The `code` is returned in `GET /tvseries` endpoint
 
 Header:
 ```
