@@ -163,7 +163,7 @@ Payload:
 }
 ```
 
-PS.: This repository did not has DB seeds.
+PS.: This repository do not have DB seeds.
 You need to create `users` document in your MongoDB instance with `email` and sha256 encrypted `password`
 
 ## Docs
